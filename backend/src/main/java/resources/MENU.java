@@ -31,18 +31,18 @@ public final class MENU {
 
 	public static final List<Item> ITENS = List.of(
 			new Item(COMPONENTS.MD_CATEGORIA, "Tag",
-					"Cadastro simples com validação de nome duplicado e exclusão com regra de negócio.",
+					"Organize os produtos por categoria.",
 					List.of("Grid", "ModalCreate", "ModalUpdate", "ModalDelete", "MasterDetails")),
 			new Item(COMPONENTS.MD_PRODUTO, "Package",
-					"Combo de categoria, campo monetário e ações derivadas de outras entidades.",
+					"Preço, estoque e categoria de cada produto.",
 					List.of("Grid", "ModalCreate", "ModalUpdate", "ModalDelete", "Combo")),
 			new Item(COMPONENTS.MD_CLIENTE, "Users",
-					"E-mail validado e mestre-detalhe com os pedidos do cliente.",
+					"Contatos dos clientes e o histórico de pedidos de cada um.",
 					List.of("Grid", "ModalCreate", "ModalUpdate", "MasterDetails")),
 			new Item(COMPONENTS.MD_PEDIDO, "Receipt",
-					"Status com valores fixos, itens do pedido e uma ação própria: selecione um pedido Aberto para marcar como pago.",
+					"Acompanhe os pedidos e seus itens. Selecione um pedido Aberto para marcar como pago.",
 					List.of("Grid", "ModalCreate", "ModalUpdate", "MasterDetails", "Combo", "FetchModal")),
 			new Item(COMPONENTS.MD_LOJA, "Storefront",
-					"Sortimento da loja montado arrastando produtos entre duas listas.",
+					"As lojas e os produtos vendidos em cada uma.",
 					List.of("Grid", "ModalCreate", "ModalUpdate", "DoubleGrid")));
 }

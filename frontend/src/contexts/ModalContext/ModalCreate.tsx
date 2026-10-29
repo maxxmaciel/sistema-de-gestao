@@ -1,7 +1,7 @@
 import { Components } from "@/components/Components"
 import { validateComponentForm } from "@/components/Zod"
 import type { IComponents, IRespUpdate } from "@/contexts/AppContext/interfaces"
-import { describeKeys, parseUpdateResponse } from "@/lib/utils"
+import { parseUpdateResponse } from "@/lib/utils"
 import { useRef, useState } from "react"
 
 export interface ModalCreateProps {
@@ -37,8 +37,6 @@ export function ModalCreate({ handleCloseModal, onClose, parms = {}, modalCreate
     onClose?.()
   }
 
-  const hasParms = Object.keys(parms).length > 0
-
   return (
     <>
       {createGeneric.show && (
@@ -73,7 +71,6 @@ export function ModalCreate({ handleCloseModal, onClose, parms = {}, modalCreate
         url="c"
         params={{ a: "component", nm_component: modalCreate.component, ...parms }}
         title={modalCreate.nm_friendly}
-        subtitle={`${modalCreate.component}${hasParms ? ` · ${describeKeys(parms)}` : ""}`}
         errors={errors}
         confirmText="Salvar"
         onClose={onClose}

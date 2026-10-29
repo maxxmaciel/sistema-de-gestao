@@ -88,12 +88,8 @@ export const rowKeyFromPk = (row: Record<string, any>, pkFields: string[], index
 export const pick = (row: Record<string, any> | undefined, keys: string[]) =>
   Object.fromEntries(keys.map((k) => [k, row?.[k]]))
 
-/** "cod_produto = 3, cod_loja = 2" — mostrado nos modais para deixar claro o que foi enviado. */
-export const describeKeys = (params: Record<string, any>) =>
-  Object.entries(params)
-    .filter(([key]) => key !== "cod_projeto")
-    .map(([key, value]) => `${key} = ${value}`)
-    .join(", ")
+/** Rota de uma tela de cadastro. A URL fica em minúsculo (/r/md_produto); o backend usa MD_PRODUTO. */
+export const resourcePath = (nmResource: string) => `/r/${nmResource.toLowerCase()}`
 
 /**
  * Lê a resposta de uma gravação (a=c_up) e diz se deu certo.

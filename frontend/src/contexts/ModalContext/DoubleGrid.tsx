@@ -4,7 +4,7 @@ import { buildGridColumnDef, buildRowSelectionColumn, Row } from "@/components/G
 import { Grid } from "@/components/Grid/data-table"
 import type { GridDefinition, IComponents, IMasterDetails, IRespUpdate } from "@/contexts/AppContext/interfaces"
 import { useFetchData } from "@/hooks/useFetchData"
-import { describeKeys, ensureAllPk, parseUpdateResponse, pick, rowKeyFromPk } from "@/lib/utils"
+import { ensureAllPk, parseUpdateResponse, pick, rowKeyFromPk } from "@/lib/utils"
 import { Alert, Box, Chip, IconButton, LinearProgress, Tooltip, Typography } from "@mui/material"
 import { ArrowCounterClockwise, ArrowLeft, ArrowRight, FloppyDisk } from "@phosphor-icons/react"
 import { useEffect, useMemo, useState } from "react"
@@ -108,7 +108,6 @@ export function DoubleGrid({ derivation: d, params, handleClose, onClose }: Doub
         open
         onClose={close}
         title={d.nm_friendly}
-        subtitle={`${d.name} · DoubleGrid · ${describeKeys(params)}`}
         maxWidth="xl"
         extraActions={
           <>

@@ -1,7 +1,7 @@
 import { Components } from "@/components/Components"
 import { validateComponentForm } from "@/components/Zod"
 import type { GridDefinition, IComponents, IRespUpdate } from "@/contexts/AppContext/interfaces"
-import { describeKeys, parseUpdateResponse } from "@/lib/utils"
+import { parseUpdateResponse } from "@/lib/utils"
 import { useRef, useState } from "react"
 
 export interface ModalUpdateProps {
@@ -63,7 +63,6 @@ export function ModalUpdate({ derivation, params, closeModal, onClose }: ModalUp
         url="c"
         params={{ a: "component", nm_component: derivation.name, ...params }}
         title={derivation.nm_friendly}
-        subtitle={`${derivation.name} · ${describeKeys(params)}`}
         errors={errors}
         confirmText="Salvar alterações"
         onClose={onClose}

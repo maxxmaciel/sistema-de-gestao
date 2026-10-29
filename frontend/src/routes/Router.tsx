@@ -5,7 +5,7 @@ import { Login } from "@/pages/Login"
 import { Navigate, Route, Routes } from "react-router-dom"
 
 /**
- * Só existem 3 rotas. Toda tela de cadastro é /r/<nome do componente>: a mesma página genérica
+ * Só existem 3 rotas. Toda tela de cadastro é /r/<nome do componente em minúsculo>: a mesma página genérica
  * para Categorias, Produtos, Clientes, Pedidos e Lojas.
  */
 export function Router() {

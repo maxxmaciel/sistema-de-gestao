@@ -4,7 +4,7 @@ import { DerivableGridSection } from "@/components/DerivableGridSection"
 import { openDerivation } from "@/components/ModalDerivation"
 import type { GridDefinition, IMasterDetails } from "@/contexts/AppContext/interfaces"
 import { useFetchData } from "@/hooks/useFetchData"
-import { describeKeys, ensureComponent } from "@/lib/utils"
+import { ensureComponent } from "@/lib/utils"
 import { Alert, Box, LinearProgress } from "@mui/material"
 import { PencilSimple } from "@phosphor-icons/react"
 
@@ -46,7 +46,6 @@ export function MasterDetails({ derivation: d, params, handleClose, onClose }: M
       open
       onClose={close}
       title={d.nm_friendly}
-      subtitle={`${d.name} · MasterDetails · ${describeKeys(params)}`}
       maxWidth="lg"
     >
       {loading && !data && <LinearProgress sx={{ mb: 2 }} />}
@@ -55,7 +54,7 @@ export function MasterDetails({ derivation: d, params, handleClose, onClose }: M
       <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
         {header && (
           <Components.FieldSet
-            title="Registro mestre"
+            title="Resumo"
             columns={header.columns}
             row={headerRow}
             actions={headerActions.map((action) => (

@@ -4,7 +4,7 @@ import type { IMasterDetails, MenuDataSchema } from "@/contexts/AppContext/inter
 import { useFetchData } from "@/hooks/useFetchData"
 import { ensureComponent } from "@/lib/utils"
 import { menuIcon } from "@/lib/menuIcons"
-import { Alert, Box, Chip, Paper, Typography } from "@mui/material"
+import { Alert, Box, Paper, Typography } from "@mui/material"
 import { useLocation } from "react-router-dom"
 
 interface GenericGridMenuProps {
@@ -30,20 +30,6 @@ export function GenericGridMenu({ Resource }: GenericGridMenuProps) {
   // Barra de ações própria desta tela, se existir (o resto continua genérico).
   const CustomActionsBar = GenericGridActionsBar[Resource.nm_resource]
 
-  const typesOnScreen = Array.from(
-    new Set(
-      [
-        data?.type,
-        grid?.type,
-        data?.create_inf ? "ModalCreate" : undefined,
-        ...(grid?.derived ?? []).map((d) => d.type),
-        CustomActionsBar ? "FetchModal" : undefined
-      ].filter(
-        (t): t is string => Boolean(t)
-      )
-    )
-  )
-
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 2.5 }}>
       <Paper variant="outlined" sx={{ p: 2.5, display: "flex", gap: 2, alignItems: "flex-start", flexWrap: "wrap" }}>
@@ -54,23 +40,9 @@ export function GenericGridMenu({ Resource }: GenericGridMenuProps) {
           <Typography variant="h5" sx={{ fontWeight: 800 }}>
             {Resource.nm_friendly}
           </Typography>
-          <Typography color="text.secondary" variant="body2" sx={{ mb: 1 }}>
+          <Typography color="text.secondary" variant="body2">
             {Resource.tx_descricao}
           </Typography>
-          <Box sx={{ display: "flex", gap: 0.75, flexWrap: "wrap", alignItems: "center" }}>
-            <Typography variant="caption" color="text.secondary">
-              Componentes nesta tela:
-            </Typography>
-            {typesOnScreen.map((t) => (
-              <Chip key={t} label={t} size="small" variant="outlined" color="primary" />
-            ))}
-          </Box>
-        </Box>
-        <Box sx={{ alignSelf: "center" }}>
-          <Typography variant="caption" color="text.secondary" component="div">
-            Tudo veio de:
-          </Typography>
-          <code style={{ fontSize: 12 }}>GET /api/c?a=component&amp;nm_component={Resource.nm_resource}</code>
         </Box>
       </Paper>
 
@@ -88,11 +60,7 @@ export function GenericGridMenu({ Resource }: GenericGridMenuProps) {
               )
             : undefined
         }
-        subtitle={
-          <span>
-            <span className="mono">{grid?.name}</span> · clique em ⋮ ou dê duplo clique numa linha para ver as ações
-          </span>
-        }
+        subtitle="Clique em ⋮ ou dê duplo clique numa linha para ver as ações"
       />
     </Box>
   )

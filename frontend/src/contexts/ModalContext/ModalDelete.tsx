@@ -2,7 +2,7 @@ import { Components } from "@/components/Components"
 import { CustomButton } from "@/components/CustomButton"
 import type { GridDefinition, IComponents, IRespUpdate } from "@/contexts/AppContext/interfaces"
 import { axiosPost, useFetchData } from "@/hooks/useFetchData"
-import { describeKeys, parseUpdateResponse } from "@/lib/utils"
+import { parseUpdateResponse } from "@/lib/utils"
 import { Alert, Box, LinearProgress } from "@mui/material"
 import { Trash } from "@phosphor-icons/react"
 import { useState } from "react"
@@ -60,7 +60,6 @@ export function ModalDelete({ derivation, params, closeModal, onClose }: ModalDe
       open
       onClose={onClose}
       title={derivation.nm_friendly}
-      subtitle={`${derivation.name} · ${describeKeys(params)}`}
       maxWidth="sm"
       closeText="Cancelar"
       extraActions={

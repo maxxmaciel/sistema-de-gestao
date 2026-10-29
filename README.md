@@ -34,8 +34,10 @@ Os scripts acham o Maven no PATH ou o que já existe em `%USERPROFILE%\.m2\wrapp
 
 ## Roteiro sugerido para a demonstração
 
-1. **Painel**: as 5 entidades e os 6 componentes genéricos. Abra o **Inspetor de API** (canto
-   superior direito) e deixe aberto ao lado: cada clique mostra o JSON que montou a tela.
+1. **Painel**: as 5 entidades. Rodando em modo dev (`dev-front.cmd`), abra o **Inspetor de API**
+   (canto superior direito) e deixe aberto ao lado: cada clique mostra o JSON que montou a tela. No
+   build publicado o Inspetor não aparece, e as telas não mostram nomes técnicos (só a URL usa
+   `/r/md_produto`).
 2. **Categorias → Adicionar** com o nome "Bebidas": o backend recusa (`IntegrityValidator`). Salve
    vazio: o front recusa (regras do `FIELD` viradas em Zod).
 3. **Categorias → ⋮ numa linha**: as ações aparecem sozinhas. "Produtos da categoria" é um

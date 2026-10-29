@@ -3,6 +3,8 @@ import { axiosGet } from "@/hooks/useFetchData"
 import { useAppContext } from "@/hooks/useAppContext"
 import { getApiTrace, subscribeApiTrace } from "@/lib/apiTrace"
 import { menuIcon } from "@/lib/menuIcons"
+import { Std } from "@/lib/std"
+import { resourcePath } from "@/lib/utils"
 import {
   AppBar,
   Avatar,
@@ -52,6 +54,8 @@ export function MainLayout() {
     window.location.href = "/login"
   }
 
+  const pageTitle = menu.find((m) => resourcePath(m.nm_resource) === location.pathname)?.nm_friendly ?? "Painel"
+
   const go = (path: string) => {
     navigate(path)
     setMobileOpen(false)
@@ -83,27 +87,17 @@ export function MainLayout() {
         </Typography>
         {menu.map((item) => {
           const Icon = menuIcon(item.icon)
-          const path = `/r/${item.nm_resource}`
+          const path = resourcePath(item.nm_resource)
           return (
             <ListItemButton key={item.nm_resource} selected={location.pathname === path} onClick={() => go(path)} sx={{ borderRadius: 2 }}>
               <ListItemIcon sx={{ minWidth: 36 }}>
                 <Icon size={20} />
               </ListItemIcon>
-              <ListItemText primary={item.nm_friendly} secondary={item.nm_resource} slotProps={{ secondary: { className: "mono", fontSize: 11 } }} />
+              <ListItemText primary={item.nm_friendly} />
             </ListItemButton>
           )
         })}
       </List>
-      <Box sx={{ mt: "auto", p: 2 }}>
-        <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: "grey.100" }}>
-          <Typography variant="caption" color="text.secondary" component="div">
-            {userData.nm_projeto}
-          </Typography>
-          <Typography variant="caption" component="div">
-            {userData.qtd_recursos} componentes liberados
-          </Typography>
-        </Box>
-      </Box>
     </Box>
   )
 
@@ -115,20 +109,25 @@ export function MainLayout() {
             <ListIcon size={22} />
           </IconButton>
           <Typography sx={{ fontWeight: 700, flex: 1 }} noWrap>
-            Painel de demonstração
+            {pageTitle}
           </Typography>
-          <Tooltip title="Ver as chamadas ao backend e o JSON de cada uma">
-            <Button color="inherit" onClick={() => setInspectorOpen(true)} sx={{ gap: 1.5 }} startIcon={
-              <Badge badgeContent={traceCount} color="primary" max={99} sx={{ "& .MuiBadge-badge": { right: -6 } }}>
-                <BracketsCurly size={20} />
-              </Badge>
-            }>
-              <Box component="span" sx={{ display: { xs: "none", sm: "inline" } }}>
-                Inspetor de API
-              </Box>
-            </Button>
-          </Tooltip>
-          <Divider orientation="vertical" flexItem sx={{ mx: 1 }} />
+          {/* Ferramenta de desenvolvedor: só no "npm run dev", nunca no site publicado. */}
+          {Std.isDevelopment && (
+            <>
+              <Tooltip title="Ver as chamadas ao backend e o JSON de cada uma">
+                <Button color="inherit" onClick={() => setInspectorOpen(true)} sx={{ gap: 1.5 }} startIcon={
+                  <Badge badgeContent={traceCount} color="primary" max={99} sx={{ "& .MuiBadge-badge": { right: -6 } }}>
+                    <BracketsCurly size={20} />
+                  </Badge>
+                }>
+                  <Box component="span" sx={{ display: { xs: "none", sm: "inline" } }}>
+                    Inspetor de API
+                  </Box>
+                </Button>
+              </Tooltip>
+              <Divider orientation="vertical" flexItem sx={{ mx: 1 }} />
+            </>
+          )}
           <Avatar sx={{ width: 32, height: 32, bgcolor: "primary.main", fontSize: 14 }}>
             {userData.nm_usuario?.split(" ").map((p) => p[0]).slice(0, 2).join("")}
           </Avatar>
@@ -164,7 +163,7 @@ export function MainLayout() {
         <Outlet />
       </Box>
 
-      <ApiInspector open={inspectorOpen} onClose={() => setInspectorOpen(false)} />
+      {Std.isDevelopment && <ApiInspector open={inspectorOpen} onClose={() => setInspectorOpen(false)} />}
     </Box>
   )
 }

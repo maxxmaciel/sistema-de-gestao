@@ -8,7 +8,7 @@ export interface ModalProps {
   open: boolean
   onClose?: () => void
   title: string
-  /** Linha pequena abaixo do título (ex.: o componente e as chaves que abriram a modal). */
+  /** Linha pequena abaixo do título. */
   subtitle?: string
   children?: ReactNode
   closeText?: string
@@ -38,7 +38,7 @@ export function Modal({
             {title}
           </Typography>
           {subtitle && (
-            <Typography variant="caption" color="text.secondary" className="mono" sx={{ display: "block" }}>
+            <Typography variant="caption" color="text.secondary" sx={{ display: "block" }}>
               {subtitle}
             </Typography>
           )}

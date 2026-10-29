@@ -161,7 +161,7 @@ public final class COMPONENTS {
 
 	/**
 	 * Força a carga desta classe na subida. Sem isso o registro só aconteceria quando alguém
-	 * encostasse em COMPONENTS (no projeto original isso é feito por um static no servlet).
+	 * encostasse em COMPONENTS.
 	 */
 	public static void boot() {
 		// o bloco static acima já rodou

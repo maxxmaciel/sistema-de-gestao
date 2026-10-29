@@ -1,5 +1,5 @@
 -- Estrutura do "banco" da demonstração (H2 em memória, modo MySQL).
--- Sem FOREIGN KEY, igual à convenção do projeto original: a integridade fica nas SPs.
+-- Sem FOREIGN KEY por convenção: a integridade fica nas SPs.
 
 CREATE TABLE tb_categoria (
   cod_categoria  INT AUTO_INCREMENT PRIMARY KEY,

@@ -1,5 +1,4 @@
-// Registro das últimas requests (alimenta o "Inspetor de API" do layout). No projeto original
-// isso é a aba Rede das DevTools internas, ligada pela flag apiRequestLogging.
+// Registro das últimas requests (alimenta o "Inspetor de API" do layout).
 
 export interface ApiTraceEntry {
   id: number

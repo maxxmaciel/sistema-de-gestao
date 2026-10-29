@@ -17,13 +17,13 @@
   </properties>
 
   <dependencies>
-    <!-- Servlet container embutido (javax.servlet: mesma API do Tomcat 9 do projeto original) -->
+    <!-- Servlet container embutido (javax.servlet, API do Tomcat 9) -->
     <dependency>
       <groupId>org.apache.tomcat.embed</groupId>
       <artifactId>tomcat-embed-core</artifactId>
       <version>9.0.123</version>
     </dependency>
-    <!-- JSON das respostas (mesma lib do projeto original) -->
+    <!-- JSON das respostas -->
     <dependency>
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>

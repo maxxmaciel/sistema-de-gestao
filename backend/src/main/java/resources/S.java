@@ -1,6 +1,6 @@
 package resources;
 
-/** Strings fixas (mesmo papel do resources.S do projeto original). */
+/** Strings fixas. */
 public final class S {
 	public static final String EMPTY = "";
 	public static final String TRUE = "true";

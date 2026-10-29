@@ -13,7 +13,7 @@ import org.h2.tools.RunScript;
  * "Banco" da demonstração: H2 em memória, sem instalar nada. A cada start ele nasce vazio e
  * carrega os scripts de src/main/resources/mock:
  *
- *   schema.sql      tabelas (sem FOREIGN KEY, mesma convenção do projeto original)
+ *   schema.sql      tabelas (sem FOREIGN KEY: a integridade fica nas SPs)
  *   procedures.sql  as "stored procedures" -> métodos Java de Procedures (CREATE ALIAS)
  *   data.sql        dados mockados
  *

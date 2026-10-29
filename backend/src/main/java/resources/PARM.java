@@ -1,7 +1,7 @@
 package resources;
 
 /**
- * Chaves do contrato JSON entre back e front (mesmos nomes do projeto original).
+ * Chaves do contrato JSON entre back e front.
  * Se mudar algo aqui, o front (src/contexts/AppContext/interfaces.ts) precisa acompanhar.
  */
 public final class PARM {

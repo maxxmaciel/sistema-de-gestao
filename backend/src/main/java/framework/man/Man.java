@@ -1,6 +1,6 @@
 package framework.man;
 
-/** Ponto único de acesso aos registros (singleton, como o Man do projeto original). */
+/** Ponto único de acesso aos registros (singleton). */
 public class Man {
 	private static final Man INSTANCE = new Man();
 

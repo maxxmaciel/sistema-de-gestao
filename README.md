@@ -1,5 +1,9 @@
 # Framework genérico: demonstração
 
+**No ar: https://sistema-de-gestao-adj7.onrender.com** (entre com o login em branco). No plano
+gratuito do Render o servidor dorme depois de 15 minutos sem acesso: o primeiro acesso leva cerca de
+1 minuto, e os dados voltam aos de demonstração a cada reinício.
+
 Projeto de demonstração do framework de componentes genéricos: telas de cadastro inteiras
 (grid, incluir, alterar, excluir, mestre-detalhe e vínculo N:N) declaradas em **uma linha de Java
 cada** e desenhadas por **componentes React genéricos** que só interpretam o JSON do backend.
